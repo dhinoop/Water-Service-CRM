@@ -4,7 +4,10 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-db_path = os.path.join(BASE_DIR, "water_service.db")
+db_path = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    "water_service.db"
+)
 
 # Excel paths
 customers_file = os.path.join(BASE_DIR, "data_record", "Customers.xlsx")

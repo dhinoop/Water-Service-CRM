@@ -1,5 +1,5 @@
 import pandas as pd
-from db import get_connection
+from backend.database.db import get_connection
 
 def generate_services_for_selected_date(selected_date):
 

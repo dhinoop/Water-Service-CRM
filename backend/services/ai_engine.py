@@ -1,5 +1,5 @@
 import pandas as pd
-from db import get_connection
+from backend.database.db import get_connection
 
 # Search Customer
 def search_customer(name=None, phone=None):
