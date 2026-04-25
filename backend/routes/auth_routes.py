@@ -7,6 +7,7 @@ USERS = {
     "staff": "staff123"
 }
 
+# ---------------- LOGIN ----------------
 @auth_bp.route("/login", methods=["POST"])
 def login():
     data = request.json
@@ -15,20 +16,22 @@ def login():
     password = data.get("password")
 
     if username in USERS and USERS[username] == password:
-        session["user"] = username
+        session["user"] = username   # ✅ single source of truth
         return jsonify({"status": "success"})
 
     return jsonify({"status": "error"}), 401
 
 
-@auth_bp.route("/logout")
+# ---------------- LOGOUT ----------------
+@auth_bp.route("/logout", methods=["GET"])
 def logout():
     session.clear()
     return jsonify({"status": "logged_out"})
 
 
-@auth_bp.route("/check-auth")
+# ---------------- CHECK AUTH ----------------
+@auth_bp.route("/check-auth", methods=["GET"])
 def check_auth():
     if "user" in session:
         return jsonify({"authenticated": True})
-    return jsonify({"authenticated": False}), 401
+    return jsonify({"authenticated": False})     
