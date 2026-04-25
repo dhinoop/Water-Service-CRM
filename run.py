@@ -1,5 +1,8 @@
 import os
-from backend.app import app   # IMPORTANT: import your Flask app
+from backend.app import app
+
+# ✅ ADD THIS
+from backend.database.load_data import *
 
 if __name__ == "__main__":
     app.run(
